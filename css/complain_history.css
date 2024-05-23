@@ -1,0 +1,119 @@
+/* complain_history.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f9;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-left: 280px;
+    margin-top: 20px;
+    max-width: 1000px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #343a40;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    width: 50px;
+    height: 3px;
+    background-color: #007bff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 2px;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 15px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #0e7cf2;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.table tbody tr {
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.table tbody tr:hover {
+    background-color: #e9ecef;
+    transform: scale(1.02);
+}
+
+.action-icon {
+    color: #007bff;
+    margin-right: 10px;
+    font-size: 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.action-icon:hover {
+    color: #0056b3;
+    transform: scale(1.2);
+}
+
+.badge {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    display: inline-block;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+    color: #343a40;
+}
+
+.badge-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.badge-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-left: 0;
+        padding: 20px;
+    }
+}

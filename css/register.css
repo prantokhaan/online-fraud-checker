@@ -1,0 +1,96 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Body Styles */
+body {
+    font-family: Poppins, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding-top: 60px; /* Adjust to match navbar height */
+}
+
+/* Register Container */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px); /* Full height minus navbar height */
+    padding: 20px;
+}
+
+/* Register Form */
+.register-form {
+    width: 100%;
+    max-width: 800px;
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.register-form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+    font-weight: 600; /* Increased font weight */
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #555;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px; /* Increased padding */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* Register Button */
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Additional Buttons */
+.additional-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.additional-buttons a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500; /* Adjusted font weight */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.additional-buttons a:hover {
+    color: #0056b3; /* Darker color on hover */
+    text-decoration: underline;
+}

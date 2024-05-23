@@ -1,0 +1,63 @@
+/* Style for Features Section */
+#features {
+    background-color: #F0F0F0; /* Same as How-it-Works Section */
+    padding: 80px 0; /* Adjust padding as needed */
+}
+
+.section-title {
+    margin-bottom: 50px;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center; /* Center align the title */
+    color: #333; /* Dark Gray */
+}
+
+.feature {
+    background-color: #fff; /* White */
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Box Shadow */
+    border-radius: 10px;
+    margin-bottom: 30px;
+    transition: transform 0.3s, box-shadow 0.3s; /* Add transition effects */
+}
+
+.feature:hover {
+    transform: translateY(-10px); /* Move up on hover */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.feature h3 {
+    color: #333; /* Dark Gray */
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center; /* Center align the headings */
+}
+
+.feature ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.feature ul li {
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s; /* Add transition effect for color change */
+}
+
+.feature ul li:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+.feature ul li i {
+    color: #007bff; /* Primary Blue */
+    margin-right: 10px;
+    font-size: 20px;
+    transition: transform 0.3s, color 0.3s; /* Add transition effects */
+}
+
+.feature ul li:hover i {
+    color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.1); /* Slightly enlarge icon on hover */
+}

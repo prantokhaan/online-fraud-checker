@@ -1,0 +1,44 @@
+/* Style for Benefits Section */
+#benefits {
+    background-color: #f8f9fa; /* Light Gray */
+    padding: 80px 0; /* Adjust padding as needed */
+}
+
+.benefits-image {
+    text-align: center;
+}
+
+.benefits-image img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.benefits-content {
+    background-color: #f8f9fa; /* Same as Hero Section */
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Box Shadow */
+    border-radius: 10px;
+}
+
+.benefits-content h2 {
+    color: #333; /* Dark Gray */
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.benefits-list {
+    margin-top: 20px;
+}
+
+.benefit-item h3 {
+    color: #007bff; /* Primary Blue */
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.benefit-item p {
+    color: #666; /* Gray */
+    font-size: 18px;
+    margin-bottom: 20px;
+}

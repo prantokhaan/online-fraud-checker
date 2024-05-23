@@ -1,0 +1,65 @@
+#pricing {
+  background-color: #f8f9fa;
+  padding: 50px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.plan {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 60px 100px; /* Increased padding */
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+
+.plan:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.plan h3 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.price {
+  font-size: 28px;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 30px;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+ul li {
+  margin-bottom: 15px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}

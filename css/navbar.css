@@ -1,0 +1,84 @@
+/* Import Oswald font */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+
+/* Navbar Container */
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #343a40;
+    padding: 10px;
+    position: fixed; /* Fixed position */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it is above other content */
+}
+
+/* Add padding to body content to prevent overlap with fixed navbar */
+body {
+    padding-top: 60px; /* Adjust based on the height of the navbar */
+}
+
+/* Logo */
+.logo {
+    font-family: Oswald, sans-serif; 
+}
+
+.logo-link {
+    font-size: 30px; 
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff; 
+    text-transform: uppercase;
+    display: inline-block; /* Ensure the element can rotate */
+    transition: transform 0.6s ease-in-out; /* Smooth transition */
+}
+
+.logo-link:hover {
+    color: #fff;
+    text-decoration: none;
+    transform: rotate(360deg); /* Rotate on hover */
+}
+
+.logo-link:hover span {
+    color: rgb(203, 199, 196);
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.nav-links li a {
+    color: #fff; /* White */
+    text-decoration: none;
+}
+
+.nav-links li a:hover {
+    color: rgb(203, 199, 196);
+    text-decoration: none;
+}
+
+/* Auth Buttons */
+.auth-buttons button, .auth-buttons a{
+    background-color: #007bff; /* Primary Blue */
+    color: #fff; /* White */
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+    text-decoration: none;
+}
+
+.auth-buttons button:hover, .auth-buttons a:hover{
+    background-color: #0056b3; /* Darker Blue */
+}
