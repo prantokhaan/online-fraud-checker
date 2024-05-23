@@ -14,6 +14,7 @@
             background-color: #f8f9fa;
             color: #333;
             padding: 20px;
+            padding-top: 50px;
         }
         
         .container {

@@ -6,6 +6,7 @@
     <title>Change Password</title>
     <link rel="stylesheet" href="../css/change_password.css">
     <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="icon" href="../images/favicon.png">
 </head>
 <body>
     <!-- Include the sidebar using PHP -->
