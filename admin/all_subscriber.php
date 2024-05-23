@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="../css/admin_sidebar.css">
     <link rel="stylesheet" href="../css/all_user_list.css">
     <link rel="icon" href="../images/favicon.png">
-    <!-- Add your other stylesheets here -->
 </head>
 <body>
-    <!-- Include the admin sidebar -->
     <?php include 'admin_sidebar.php'; ?>
 
     <!-- Main Content -->

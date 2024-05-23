@@ -39,7 +39,6 @@
         </div>
     </div>
 
-    <!-- Your JavaScript files -->
     <script src="script.js"></script>
 </body>
 </html>
