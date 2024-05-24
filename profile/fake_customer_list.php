@@ -21,35 +21,41 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Complain ID</th>
                         <th>Name</th>
-                        <th>Courier</th>
-                        <th>Courier ID</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>FB Link</th>
+                        <th>Complain Count</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Example rows (in actual implementation, fetch data from the database) -->
-                    <tr>
-                        <td>1</td>
-                        <td>John Doe</td>
-                        <td>FedEx</td>
-                        <td>123456</td>
-                        <td>2023-05-01</td>
-                        <td><span class="badge badge-warning">Pending</span></td>
-                        <td>
-                            <a href="edit_complain.php?id=1" class="action-icon"><i class="fas fa-edit"></i></a>
-                            <a href="delete_complain.php?id=1" class="action-icon"><i class="fas fa-trash-alt"></i></a>
-                        </td>
-                    </tr>
-                    <!-- Add more rows as needed -->
+                    <?php
+                    // Include database connection
+                    include '../database/db.php';
+
+                    // Fetch data from fakeSellers table
+                    $sql = "SELECT * FROM fakeCustomers";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        // Output data of each row
+                        while($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . $row["customerName"] . "</td>";
+                            echo "<td>" . $row["customerEmail"] . "</td>";
+                            echo "<td>" . $row["customerAddress"] . "</td>";
+                            echo "<td><a href='" . $row["customerFBLink"] . "' target='_blank'>Click Here</a></td>";
+                            echo "<td>" . $row["complainCount"] . "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='5'>No fake shops found.</td></tr>";
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
     </div>
-
 
 </body>
 </html>

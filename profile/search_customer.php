@@ -15,23 +15,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $sortBy = $_POST['sort_by'];
 
     // Prepare SQL query based on search criteria
-    $sql = "SELECT * FROM fakeSellers WHERE ";
+    $sql = "SELECT * FROM fakeCustomers WHERE ";
 
     switch ($searchBy) {
         case 'name':
-            $sql .= "sellerName LIKE '%" . $searchTerm . "%'";
+            $sql .= "customerName LIKE '%" . $searchTerm . "%'";
             break;
         case 'email':
-            $sql .= "sellerEmail LIKE '%" . $searchTerm . "%'";
+            $sql .= "customerEmail LIKE '%" . $searchTerm . "%'";
             break;
         case 'phone':
-            $sql .= "sellerPhone LIKE '%" . $searchTerm . "%'";
+            $sql .= "customerPhone LIKE '%" . $searchTerm . "%'";
             break;
         case 'facebook':
-            $sql .= "sellerFBLink LIKE '%" . $searchTerm . "%'";
+            $sql .= "customerFBLink LIKE '%" . $searchTerm . "%'";
             break;
         case 'booking':
-            $sql = "select * from sellerComplain where courierBookingId LIKE '%" . $searchTerm . "%'";
+            $sql = "select * from customerComplain where courierBookingId LIKE '%" . $searchTerm . "%'";
             break;
         default:
             // Invalid search option
@@ -41,19 +41,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     // Add sorting to SQL query
     switch ($sortBy) {
         case 'name':
-            $sql .= " ORDER BY sellerName";
+            $sql .= " ORDER BY customerName";
             break;
         case 'email':
-            $sql .= " ORDER BY sellerEmail";
+            $sql .= " ORDER BY customerEmail";
             break;
         case 'phone':
-            $sql .= " ORDER BY sellerPhone";
+            $sql .= " ORDER BY customerPhone";
             break;
         case 'complain_count':
             $sql .= " ORDER BY complainCount";
             break;
         case 'address':
-            $sql .= " ORDER BY sellerAddress";
+            $sql .= " ORDER BY customerAddress";
             break;
         default:
             // Invalid sort option
@@ -125,11 +125,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                     if (!empty($results)) {
                         foreach ($results as $row) {
                             echo "<tr>";
-                            echo "<td>" . $row["sellerName"] . "</td>";
-                            echo "<td>" . $row["sellerEmail"] . "</td>";
-                            echo "<td>" . $row["sellerPhone"] . "</td>";
-                            echo "<td>" . $row["sellerFBLink"] . "</td>";
-                            echo "<td>" . $row["sellerAddress"] . "</td>";
+                            echo "<td>" . $row["customerName"] . "</td>";
+                            echo "<td>" . $row["customerEmail"] . "</td>";
+                            echo "<td>" . $row["customerPhone"] . "</td>";
+                            echo "<td>" . $row["customerFBLink"] . "</td>";
+                            echo "<td>" . $row["customerAddress"] . "</td>";
                             echo "<td>" . $row["complainCount"] . "</td>";
                             // echo "<td><a href='view_user.php'>View</a></td>";
                             echo "</tr>";

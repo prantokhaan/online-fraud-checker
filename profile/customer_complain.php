@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/customer_complain.css">
     <link rel="stylesheet" href="../css/sidebar.css">
-
     <link rel="icon" href="../images/favicon.png">
 </head>
 <body>
@@ -19,7 +18,8 @@
         <div class="container">
             <h2>Complain Form</h2>
             <p class="terms-text">Read our <a href="../terms.php">terms and policy</a> carefully before placing any complaint.</p>
-            <form action="process_complain.php" method="post">
+            <form id="complainForm" action="process_customer_complain.php" method="post">
+                <input type="hidden" id="username" name="username">
                 <div class="form-group">
                     <label for="customerName">Customer Name:</label>
                     <input type="text" id="customerName" name="customerName" class="form-control" required>
@@ -58,8 +58,8 @@
                 </div>
                 <div class="form-group">
                     <label>
-                        <input type="checkbox" required>
-                        I will be responsible for this complain. <a href="../terms.php">Learn more</a>
+                        <input type="checkbox" id="termsCheckbox" required>
+                        I will be responsible for this complaint. <a href="../terms.php">Learn more</a>
                     </label>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -67,5 +67,31 @@
         </div>
     </div>
 
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if the user is logged in and redirect to index.php if not
+            // checkUserAuthentication();
+
+            // Get the username from localStorage and set it in the hidden input field
+            var username = localStorage.getItem('username');
+            if (username) {
+                document.getElementById('username').value = username;
+                console.log(username);
+            } else {
+                alert('User not logged in. Redirecting to home page.');
+                window.location.href = '../index.php';
+            }
+        });
+
+        document.getElementById('complainForm').addEventListener('submit', function(event) {
+            var checkbox = document.getElementById('termsCheckbox');
+            if (!checkbox.checked) {
+                event.preventDefault();
+                alert('You must agree to the terms and conditions.');
+            }
+        });
+    </script>
 </body>
 </html>

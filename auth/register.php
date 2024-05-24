@@ -9,11 +9,35 @@
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="icon" href="../images/favicon.png">
 </head>
+<script>
+        function validateForm() {
+            // Check if terms and conditions checkbox is checked
+            if (!document.getElementById('terms').checked) {
+                alert("Please agree to terms and conditions.");
+                return false;
+            }
+
+            // Check if passwords match
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 <body>
     <?php include '../landing_page/navbar.php'; ?>
     <div class="register-container">
         <div class="register-form">
             <h2>Register</h2>
+            <?php
+            if (isset($_GET['error']) && $_GET['error'] == 'username_exists') {
+                echo '<div class="alert alert-danger">Username already exists. Please choose another one.</div>';
+            }
+            ?>
             <form action="process_register.php" method="post">
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -31,7 +55,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="shopName">Shop Name (if seller):</label>
-                        <input type="text" id="shopName" name="shopName" class="form-control" placeholder="Enter your shop name">
+                        <input type="text" id="shopName" name="shopName" class="form-control" placeholder="Enter your shop name (optional)">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="age">Age:</label>

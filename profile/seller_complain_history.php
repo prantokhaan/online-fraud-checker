@@ -64,6 +64,6 @@
 
 
     <!-- Include the JavaScript file -->
-    <script src="fetchComplainHistory.js"></script>
+    <script src="fetchSellerComplainHistory.js"></script>
 </body>
 </html>

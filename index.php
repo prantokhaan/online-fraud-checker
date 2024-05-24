@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION['username'])) {
+    echo "<script>localStorage.setItem('username', '" . $_SESSION['username'] . "');</script>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,8 +39,30 @@
     <?php include 'landing_page/footer.php'; ?>
 
 
+    <!-- Modal -->
+    <div class="modal" id="confirmDeleteModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete this complaint?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" id="confirmDeleteBtn" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <!-- JavaScript -->
     <script src="js/testimonial.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 </html>

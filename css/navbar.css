@@ -68,7 +68,7 @@ body {
 }
 
 /* Auth Buttons */
-.auth-buttons button, .auth-buttons a{
+.auth-buttons a {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -77,8 +77,14 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease; /* Smooth transition */
     text-decoration: none;
+    margin-right: 10px; /* Add some spacing between buttons */
 }
 
-.auth-buttons button:hover, .auth-buttons a:hover{
+.auth-buttons a:hover {
     background-color: #0056b3; /* Darker Blue */
+}
+
+.auth-buttons a i span{
+    font-family: Poppins, sans-serif;
+    font-weight: normal;
 }

@@ -8,19 +8,17 @@
             <li><a href="about.php">About</a></li>
             <li><a href="../contact.php">Contact</a></li>
         </ul>
-        <div class="auth-buttons">
-            <button>
-                <a href="../auth/login.php">Login</a>
-            </button>
-            <button>
-                <a href="../auth/register.php">Register</a>
-            </button>
-            <button>
-                <a href="../profile/profile.php">My Profile</a>
-            </button>
-            <button>
-                <a href="../admin/all_user_list.php">Admin</a>
-            </button>
+        <div class="auth-buttons" id="auth-buttons">
+            <?php
+            // PHP to dynamically generate authentication buttons based on user login status
+            if(isset($_SESSION['username'])) {
+                echo '<a href="../profile/profile.php" class="me-5"><i class="fas fa-user"> <span>' . $_SESSION['username'] . '</span></i></a>'; // Font Awesome icon for user profile
+                echo '<a onclick="logout()" href="#"><i class="fas fa-sign-out-alt"><span>LogOut</span></i></a>'; // Font Awesome icon for logout
+            } else {
+                echo '<a href="../auth/login.php">Login</a>';
+                echo '<a href="../auth/register.php">Register</a>';
+            }
+            ?>
         </div>
     </div>
 </nav>

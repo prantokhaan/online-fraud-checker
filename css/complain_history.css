@@ -82,12 +82,15 @@ h2::after {
     margin-right: 10px;
     font-size: 20px;
     transition: color 0.3s ease, transform 0.3s ease;
+    border: none;
 }
 
 .action-icon:hover {
     color: #0056b3;
     transform: scale(1.2);
+    border: none;
 }
+
 
 .badge {
     padding: 10px;

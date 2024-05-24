@@ -17,28 +17,13 @@
     <div class="main-content">
         <div class="container">
             <h2>User Profile</h2>
-            <div class="user-info">
-                <div class="form-group">
-                    <label>Full Name:</label>
-                    <span>Ismatul Islam Pranto</span>
-                </div>
-                <div class="form-group">
-                    <label>Age:</label>
-                    <span>18</span>
-                </div>
-                <div class="form-group">
-                    <label>Email:</label>
-                    <span>prantokhaan@gmail.com</span>
-                </div>
-                <div class="form-group">
-                    <label>Address:</label>
-                    <span>Dhaka</span>
-                </div>
-                <!-- Add more fields as needed -->
+            <div class="user-info" id="user-info">
+                <!-- User information will be dynamically added here -->
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Include the external JavaScript file -->
+    <script src="../js/profile.js"></script>
 </body>
 </html>
