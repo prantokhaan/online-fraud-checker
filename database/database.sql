@@ -7,6 +7,7 @@ create table users(
     registerAs varchar(255) not null,
     fullName varchar(255) not null,
     shopName varchar(255),
+    subscriberStatus varchar(255) not null, 
     age int not null,
     phoneNumber varchar(255) not null,
     address varchar(255) not null,
@@ -87,7 +88,7 @@ END
 
 
 
-drop table sellerComplain;
+drop table users;
 
 
 select * from users;

@@ -25,41 +25,51 @@ function fetchUserInfo() {
         var userInfo = JSON.parse(xhr.responseText);
         // Update the user information in the HTML
         document.getElementById("user-info").innerHTML = `
-                    <div class="form-group">
-                        <label>Full Name:</label>
-                        <span>${userInfo.fullName}</span>
-                    </div>
-                    <div class="form-group">
-                        <label>Age:</label>
-                        <span>${userInfo.age}</span>
-                    </div>
-                    <div class="form-group">
-                        <label>Email:</label>
-                        <span>${userInfo.email}</span>
-                    </div>
-                    <div class="form-group">
-                        <label>Address:</label>
-                        <span>${userInfo.address}</span>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone Number:</label>
-                        <span>${userInfo.phoneNumber}</span>
-                    </div>
-                    <div class="form-group">
-                        <label>Account Type:</label>
-                        <span>${userInfo.registerAs}</span>
-                    </div>
-                    <div class="form-group">
-                        <label>Shop Name:</label>
-                        <span>${
-                          userInfo.shopName ? userInfo.shopName : "N/A"
-                        }</span>
-                    </div>
-                    <div class="form-group">
-                        <label>Account Created At:</label>
-                        <span>${userInfo.created_at}</span>
-                    </div>
-                `;
+          <div class="form-group">
+              <label>Full Name:</label>
+              <span>${userInfo.fullName}</span>
+          </div>
+          <div class="form-group">
+              <label>Age:</label>
+              <span>${userInfo.age}</span>
+          </div>
+          <div class="form-group">
+              <label>Email:</label>
+              <span>${userInfo.email}</span>
+          </div>
+          <div class="form-group">
+              <label>Address:</label>
+              <span>${userInfo.address}</span>
+          </div>
+          <div class="form-group">
+              <label>Phone Number:</label>
+              <span>${userInfo.phoneNumber}</span>
+          </div>
+          <div class="form-group">
+              <label>Account Type:</label>
+              <span>${userInfo.registerAs}</span>
+          </div>
+          <div class="form-group">
+              <label>Shop Name:</label>
+              <span>${userInfo.shopName ? userInfo.shopName : "N/A"}</span>
+          </div>
+          <div class="form-group">
+              <label>Subscribe Status:</label>
+              <span id="subscriber-status">${userInfo.subscriberStatus}</span>
+          </div>
+          <div class="form-group">
+              <label>Account Created At:</label>
+              <span>${userInfo.created_at}</span>
+          </div>
+        `;
+
+        // Apply red background if subscriber status is "none"
+        var subscriberStatusElement =
+          document.getElementById("subscriber-status");
+        if (userInfo.subscriberStatus.toLowerCase() === "none") {
+          subscriberStatusElement.style.backgroundColor = "red";
+          subscriberStatusElement.style.color = "white";
+        }
       } else {
         console.error("Error fetching user information. Status: " + xhr.status);
       }

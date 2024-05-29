@@ -11,7 +11,7 @@
                         <li><i class="fas fa-check-circle"></i> Feature 2</li>
                         <li><i class="fas fa-times-circle"></i> Feature 3</li>
                     </ul>
-                    <a href="#" class="btn">Grab Now</a>
+                    <a href="../Subscribe/subscribe.php" class="btn">Grab Now</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -23,7 +23,7 @@
                         <li><i class="fas fa-check-circle"></i> Feature 2</li>
                         <li><i class="fas fa-check-circle"></i> Feature 3</li>
                     </ul>
-                    <a href="#" class="btn">Grab Now</a>
+                    <a href="../Subscribe/subscribe.php" class="btn">Grab Now</a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -35,7 +35,7 @@
                         <li><i class="fas fa-check-circle"></i> Feature 2</li>
                         <li><i class="fas fa-check-circle"></i> Feature 3</li>
                     </ul>
-                    <a href="#" class="btn">Grab Now</a>
+                    <a href="../Subscribe/subscribe.php" class="btn">Grab Now</a>
                 </div>
             </div>
         </div>

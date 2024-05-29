@@ -43,6 +43,25 @@ function updateSidebar(userInfo) {
     removeMenuItem(sidebarMenu, "Search Customer");
   }
 
+  if(userInfo.subscriberStatus === "None"){
+    removeMenuItem(sidebarMenu, "Complain a Seller");
+    removeMenuItem(sidebarMenu, "Complain a Customer");
+    removeMenuItem(sidebarMenu, "My Complain History");
+    removeMenuItem(sidebarMenu, "Complain History");
+    removeMenuItem(sidebarMenu, "Search Customer");
+    removeMenuItem(sidebarMenu, "Search");
+    removeMenuItem(sidebarMenu, "Fake Shop List");
+    removeMenuItem(sidebarMenu, "Trusted Shop List");
+  }else if(userInfo.subscriberStatus==="Basic"){
+    removeMenuItem(sidebarMenu, "Fake Shop List");
+    removeMenuItem(sidebarMenu, "Trusted Shop List");
+    removeMenuItem(sidebarMenu, "Search");
+    removeMenuItem(sidebarMenu, "Search Customer");
+  }else if(userInfo.subscriberStatus==="Standard"){
+    removeMenuItem(sidebarMenu, "Search");
+    removeMenuItem(sidebarMenu, "Search Customer");
+  }
+
   // Add logout functionality
   var logoutLink = sidebarMenu.querySelector('a[href="#"]');
   if (logoutLink) {

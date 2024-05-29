@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Prepare the SQL statement to insert the new user
-    $stmt = $conn->prepare("INSERT INTO users (registerAs, fullName, shopName, age, phoneNumber, address, username, password, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO users (registerAs, fullName, shopName, age, phoneNumber, address, username, password, email, subscriberStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'None')");
     $stmt->bind_param("sssisssss", $registerAs, $fullName, $shopName, $age, $phoneNumber, $address, $username, $hashedPassword, $email);
 
     // Execute the statement
