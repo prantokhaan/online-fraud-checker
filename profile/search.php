@@ -176,9 +176,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                         alert("Please buy a Premium Plan to view this page");
                         window.location.href = '../Subscribe/subscribe.php';
                     }
-                    else {
-                        document.querySelector('.main-content').style.display = 'block';
-                    }
                     
                     else {
                         document.querySelector('.main-content').style.display = 'block';

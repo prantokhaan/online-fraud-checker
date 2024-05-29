@@ -92,10 +92,6 @@
                     else {
                         document.querySelector('.main-content').style.display = 'block';
                     }
-                    
-                    else {
-                        document.querySelector('.main-content').style.display = 'block';
-                    }
                 } else {
                     console.error('Error checking subscription status:', xhr.statusText);
                 }
