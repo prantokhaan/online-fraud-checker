@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="../css/customer_complain.css">
     <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="icon" href="../images/favicon.png">
+    <style>
+        .main-content {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <!-- Include the sidebar using PHP -->
@@ -78,6 +83,7 @@
             var username = localStorage.getItem('username');
             if (username) {
                 document.getElementById('username').value = username;
+                checkSubscriptionStatus(username);
             } else {
                 alert('User not logged in. Redirecting to home page.');
                 window.location.href = '../index.php';
@@ -91,6 +97,25 @@
                 alert('You must agree to the terms and conditions.');
             }
         });
+
+        function checkSubscriptionStatus(username) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '../Subscribe/get_subscription_status.php?username=' + encodeURIComponent(username), true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.subscriberStatus === 'None') {
+                        alert('Please buy a subscription to place a complaint.');
+                        window.location.href = '../Subscribe/subscribe.php';
+                    } else {
+                        document.querySelector('.main-content').style.display = 'block';
+                    }
+                } else {
+                    console.error('Error checking subscription status:', xhr.statusText);
+                }
+            };
+            xhr.send();
+        }
     </script>
 </body>
 </html>

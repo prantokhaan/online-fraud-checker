@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             $sql .= "sellerFBLink LIKE '%" . $searchTerm . "%'";
             break;
         case 'booking':
-            $sql = "select * from sellerComplain where courierBookingId LIKE '%" . $searchTerm . "%'";
+            $sql = "SELECT * FROM sellerComplain WHERE courierBookingId LIKE '%" . $searchTerm . "%'";
             break;
         default:
             // Invalid search option
@@ -81,10 +81,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     <link rel="stylesheet" type="text/css" href="../css/sidebar.css">
     <link rel="stylesheet" type="text/css" href="../css/search.css">
     <link rel="icon" href="../images/favicon.png">
+    <style>
+        .main-content {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <?php include '../shared/sidebar.php'; ?>
-    <div class="container">
+    <div class="container main-content">
         <h2>Search Page</h2>
         <form method="post" action="">
             <div class="search-box">
@@ -142,5 +147,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
             </table>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if the user is logged in and redirect to index.php if not
+            var username = localStorage.getItem('username');
+            if (username) {
+                checkSubscriptionStatus(username);
+            } else {
+                alert('User not logged in. Redirecting to home page.');
+                window.location.href = '../index.php';
+            }
+        });
+
+        function checkSubscriptionStatus(username) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '../Subscribe/get_subscription_status.php?username=' + encodeURIComponent(username), true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.subscriberStatus === 'None') {
+                        alert('Please buy a subscription to view this page.');
+                        window.location.href = '../Subscribe/subscribe.php';
+                    } else if(response.subscriberStatus === 'Basic'){
+                        alert("Please buy a Premium Plan to view this page");
+                        window.location.href = '../Subscribe/subscribe.php';
+                    }else if(response.subscriberStatus === 'Standard'){
+                        alert("Please buy a Premium Plan to view this page");
+                        window.location.href = '../Subscribe/subscribe.php';
+                    }
+                    else {
+                        document.querySelector('.main-content').style.display = 'block';
+                    }
+                    
+                    else {
+                        document.querySelector('.main-content').style.display = 'block';
+                    }
+                } else {
+                    console.error('Error checking subscription status:', xhr.statusText);
+                }
+            };
+            xhr.send();
+        }
+    </script>
 </body>
 </html>
