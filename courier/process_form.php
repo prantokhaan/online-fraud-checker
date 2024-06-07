@@ -10,21 +10,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $courierBookingId = $_POST['courier-booking-id'];
     $orderedProduct = $_POST['ordered-product'];
 
-    // Insert data into the database
-    $sql = "INSERT INTO courier (courierName, customerName, customerPhone, sellerName, sellerPhone, courierBookingId, orderedProduct)
-            VALUES ('$courierName', '$customerName', '$phoneNumber', '$sellerName', '$sellerPhone', '$courierBookingId', '$orderedProduct')";
-    
-    // Debugging: Check SQL query
-    echo "SQL query: $sql<br>";
+    // Check if the entry already exists
+    $existing_sql = "SELECT * FROM courier WHERE courierBookingId = '$courierBookingId'";
+    $existing_result = $conn->query($existing_sql);
 
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-        header("Location: show_bookings.php");
-        exit();
+    if ($existing_result->num_rows > 0) {
+        echo "<script>alert('An entry with the provided booking ID already exists.')
+        window.location.href = 'courier.php';
+        </script>";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        // Insert data into the database
+        $sql = "INSERT INTO courier (courierName, customerName, customerPhone, sellerName, sellerPhone, courierBookingId, orderedProduct)
+                VALUES ('$courierName', '$customerName', '$phoneNumber', '$sellerName', '$sellerPhone', '$courierBookingId', '$orderedProduct')";
+        
+        // Debugging: Check SQL query
+        echo "SQL query: $sql<br>";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "<script>alert('New record created successfully')
+            window.location.href = 'show_bookings.php';
+            </script>";
+            exit();
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
     }
-    
+
     $conn->close();
 }
 ?>

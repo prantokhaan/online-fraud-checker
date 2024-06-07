@@ -56,6 +56,21 @@ function fetchUserInfo() {
           <div class="form-group">
               <label>Subscribe Status:</label>
               <span id="subscriber-status">${userInfo.subscriberStatus}</span>
+              
+          </div>
+          <div class="form-group">
+              <label>Account Status:</label>
+              <span id="account-status">${userInfo.accountStatus}</span>
+              ${
+                userInfo.accountStatus.toLowerCase() === "banned"
+                  ? `<button onclick="alert('Request Sent')" class="request-button">Request To Activate Account</button>`
+                  : ""
+              }
+          </div>
+          <div class="form-group">
+              <label>Rejected Count:</label>
+              <span id="rejected-count">${userInfo.rejectedCount}</span>
+              <span>(If you hit 5 Rejection, You will be automatically banned)</span>
           </div>
           <div class="form-group">
               <label>Account Created At:</label>
@@ -63,19 +78,61 @@ function fetchUserInfo() {
           </div>
         `;
 
-        // Apply red background if subscriber status is "none"
+        // Apply background color based on subscriber status
         var subscriberStatusElement =
           document.getElementById("subscriber-status");
-        if (userInfo.subscriberStatus.toLowerCase() === "none") {
-          subscriberStatusElement.style.backgroundColor = "red";
-          subscriberStatusElement.style.color = "white";
-        }
+        applyBackgroundColor(
+          subscriberStatusElement,
+          userInfo.subscriberStatus
+        );
+
+        // Apply background color based on account status
+        var accountStatusElement = document.getElementById("account-status");
+        applyAccountStatusColor(accountStatusElement, userInfo.accountStatus);
       } else {
         console.error("Error fetching user information. Status: " + xhr.status);
       }
     };
     xhr.send();
   }
+}
+
+// Apply background color based on status
+function applyBackgroundColor(element, status) {
+  var lowerCaseStatus = status.toLowerCase();
+  switch (lowerCaseStatus) {
+    case "none":
+      element.style.backgroundColor = "red";
+      element.style.color = "white";
+      break;
+    case "premium":
+      element.style.backgroundColor = "green";
+      element.style.color = "white";
+      break;
+    case "standard":
+      element.style.backgroundColor = "blue";
+      element.style.color = "white";
+      break;
+    default:
+      element.style.backgroundColor = "orange";
+      element.style.color = "white";
+      break;
+  }
+}
+
+function applyAccountStatusColor(element, status){
+  var lowerCaseStatus = status.toLowerCase();
+  switch (lowerCaseStatus) {
+    case "banned":
+      element.style.backgroundColor = "red";
+      element.style.color = "white";
+      break;
+    default:
+      element.style.backgroundColor = "green";
+      element.style.color = "white";
+      break;
+  }
+
 }
 
 // Call the fetchUserInfo function when the page loads

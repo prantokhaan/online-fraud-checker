@@ -28,14 +28,18 @@ function fetchUserInfoAndUpdateSidebar() {
 
 function updateSidebar(userInfo) {
   var sidebarMenu = document.querySelector(".menu");
-  if (userInfo.registerAs === "seller") {
+  var lowerCaseRegisterAs = userInfo.registerAs.toLowerCase();
+  var lowerCaseSubscriberStatus = userInfo.subscriberStatus.toLowerCase();
+  var lowerCaseAccountStatus = userInfo.accountStatus.toLowerCase();
+
+  if (lowerCaseRegisterAs === "seller") {
     // Remove "Complain a Seller" if the user is a seller
     removeMenuItem(sidebarMenu, "Complain a Seller");
     removeMenuItem(sidebarMenu, "Fake Shop List");
     removeMenuItem(sidebarMenu, "Trusted Shop List");
     removeMenuItem(sidebarMenu, "My Complain History");
     removeMenuItem(sidebarMenu, "Search");
-  } else if (userInfo.registerAs === "customer") {
+  } else if (lowerCaseRegisterAs === "customer") {
     // Remove "Complain a Customer" if the user is a customer
     removeMenuItem(sidebarMenu, "Complain a Customer");
     removeMenuItem(sidebarMenu, "Fake Customer List");
@@ -43,7 +47,10 @@ function updateSidebar(userInfo) {
     removeMenuItem(sidebarMenu, "Search Customer");
   }
 
-  if(userInfo.subscriberStatus === "None"){
+  if (
+    lowerCaseSubscriberStatus === "none" ||
+    lowerCaseAccountStatus === "banned"
+  ) {
     removeMenuItem(sidebarMenu, "Complain a Seller");
     removeMenuItem(sidebarMenu, "Complain a Customer");
     removeMenuItem(sidebarMenu, "My Complain History");
@@ -52,14 +59,26 @@ function updateSidebar(userInfo) {
     removeMenuItem(sidebarMenu, "Search");
     removeMenuItem(sidebarMenu, "Fake Shop List");
     removeMenuItem(sidebarMenu, "Trusted Shop List");
-  }else if(userInfo.subscriberStatus==="Basic"){
+  } else if (lowerCaseSubscriberStatus === "basic") {
     removeMenuItem(sidebarMenu, "Fake Shop List");
     removeMenuItem(sidebarMenu, "Trusted Shop List");
     removeMenuItem(sidebarMenu, "Search");
     removeMenuItem(sidebarMenu, "Search Customer");
-  }else if(userInfo.subscriberStatus==="Standard"){
+  } else if (lowerCaseSubscriberStatus === "standard") {
     removeMenuItem(sidebarMenu, "Search");
     removeMenuItem(sidebarMenu, "Search Customer");
+  }
+
+  if(lowerCaseAccountStatus === "banned"){
+    removeMenuItem(sidebarMenu, "Complain a Seller");
+    removeMenuItem(sidebarMenu, "Complain a Customer");
+    removeMenuItem(sidebarMenu, "My Complain History");
+    removeMenuItem(sidebarMenu, "Complain History");
+    removeMenuItem(sidebarMenu, "Search Customer");
+    removeMenuItem(sidebarMenu, "Search");
+    removeMenuItem(sidebarMenu, "Fake Shop List");
+    removeMenuItem(sidebarMenu, "Trusted Shop List");
+    removeMenuItem(sidebarMenu, "Change Password");
   }
 
   // Add logout functionality
@@ -76,7 +95,10 @@ function removeMenuItem(menu, itemText) {
   var items = menu.querySelectorAll("li");
   items.forEach(function (item) {
     var link = item.querySelector("a");
-    if (link && link.textContent.trim() === itemText) {
+    if (
+      link &&
+      link.textContent.trim().toLowerCase() === itemText.toLowerCase()
+    ) {
       menu.removeChild(item);
     }
   });

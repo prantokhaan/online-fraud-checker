@@ -19,45 +19,98 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $orderedProduct = $_POST['orderedProduct'];
     $imageLink = $_POST['imageLink'];
 
-    // Check if seller exists in fakeSellers table
-    $stmt = $conn->prepare("SELECT id FROM fakeSellers WHERE sellerName = ? OR sellerEmail = ? OR sellerPhone = ? OR sellerAddress = ? OR sellerFBLink = ?");
+    // Step 1: Search with the courierBookingId in the courier table
+    $stmt = $conn->prepare("SELECT * FROM courier WHERE courierBookingId = ?");
     if (!$stmt) {
         die("Error preparing statement: " . $conn->error);
     }
-    $stmt->bind_param("sssss", $sellerName, $sellerEmail, $sellerPhone, $sellerAddress, $sellerFBLink);
+    $stmt->bind_param("s", $courierBookingId);
     $stmt->execute();
     $result = $stmt->get_result();
-    $seller = $result->fetch_assoc();
+    $courier = $result->fetch_assoc();
 
-    if ($seller) {
-        // Seller found, call stored procedure to increment complainCount
-        $sellerId = $seller['id'];
-        $stmt = $conn->prepare("CALL IncrementSellerComplainCount(?)");
-        if (!$stmt) {
-            die("Error preparing statement: " . $conn->error);
-        }
-        $stmt->bind_param("i", $sellerId);
-        $stmt->execute();
-    } else {
-        // Seller not found, insert as fake seller
-        $stmt = $conn->prepare("INSERT INTO fakeSellers (sellerName, sellerEmail, sellerPhone, sellerAddress, sellerFBLink, complainCount) VALUES (?, ?, ?, ?, ?, 1)");
-        if (!$stmt) {
-            die("Error preparing statement: " . $conn->error);
-        }
-        $stmt->bind_param("sssss", $sellerName, $sellerEmail, $sellerPhone, $sellerAddress, $sellerFBLink);
-        $stmt->execute();
-    }
-
-    // Insert complaint
-    $stmt = $conn->prepare("INSERT INTO sellerComplain (userName, sellerName, sellerEmail, sellerPhone, sellerAddress, sellerFBLink, courierName, courierBookingId, orderedProduct, imageLink, complainStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Pending')");
+    // Step 2: Search with the username in the users table
+    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
     if (!$stmt) {
         die("Error preparing statement: " . $conn->error);
     }
-    $stmt->bind_param("ssisssssss", $userName, $sellerName, $sellerEmail, $sellerPhone, $sellerAddress, $sellerFBLink, $courierName, $courierBookingId, $orderedProduct, $imageLink);
+    $stmt->bind_param("s", $userName);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+
+
+    // Step 3: Match courier table data with user table data
+    if ($courier && $user &&
+    strtolower($courier['customerName']) === strtolower($user['fullName']) &&
+    strtolower($courier['customerPhone']) === strtolower($user['phoneNumber']) &&
+    strtolower($courier['sellerName']) === strtolower($sellerName) &&
+    strtolower($courier['sellerPhone']) === strtolower($sellerPhone) &&
+    strtolower($courier['courierName']) === strtolower($courierName) &&
+    strtolower($courier['orderedProduct']) === strtolower($orderedProduct)) {
+    $complainStatus = 'Accepted';
+    echo "Complaint status: Accepted";
+
+    $stmt = $conn->prepare("UPDATE fakeSellers SET complainCount = complainCount + 1 WHERE sellerName = ?");
+        if (!$stmt) {
+            die("Error preparing statement: " . $conn->error);
+        }
+        $stmt->bind_param("s", $sellerName);
+        $stmt->execute();
+} else {
+    $complainStatus = 'Rejected';
+    echo "Complaint status: Rejected";
+    echo "Details did not match";
+
+    // Step 5: If rejected, update user details
+    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
+    if (!$stmt) {
+        die("Error preparing statement: " . $conn->error);
+    }
+    $stmt->bind_param("s", $userName);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+
+    if ($user) {
+        $rejectedCount = $user['rejectedCount'] + 1;
+        $accountStatus = $user['accountStatus'];
+
+        // Increment rejectedCount and update accountStatus if needed
+        if ($rejectedCount >= 5) {
+            $rejectedCount = 0; // Reset rejectedCount
+            $accountStatus = 'banned';
+            echo "<script>
+            alert('You are banned from the system due to multiple rejections.');
+            window.location.href = 'profile.php';
+            </script>";
+        }
+
+        // Update user record
+        $stmt = $conn->prepare("UPDATE users SET rejectedCount = ?, accountStatus = ? WHERE username = ?");
+        if (!$stmt) {
+            die("Error preparing statement: " . $conn->error);
+        }
+        $stmt->bind_param("iss", $rejectedCount, $accountStatus, $userName);
+        $stmt->execute();
+
+        
+    } else {
+        echo "User not found.";
+    }
+}
+
+    // Step 4: Insert complaint
+    $stmt = $conn->prepare("INSERT INTO sellerComplain (userName, sellerName, sellerEmail, sellerPhone, sellerAddress, sellerFBLink, courierName, courierBookingId, orderedProduct, imageLink, complainStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    if (!$stmt) {
+        die("Error preparing statement: " . $conn->error);
+    }
+    $stmt->bind_param("ssissssssss", $userName, $sellerName, $sellerEmail, $sellerPhone, $sellerAddress, $sellerFBLink, $courierName, $courierBookingId, $orderedProduct, $imageLink, $complainStatus);
     if ($stmt->execute()) {
-        echo "Complaint submitted successfully!";
-        header("Location: profile.php");
-        exit();
+        echo "<script>
+            alert('Complaint submitted successfully');
+            window.location.href = 'profile.php';
+        </script>";
     } else {
         echo "Error executing statement: " . $stmt->error;
         // Log error to file

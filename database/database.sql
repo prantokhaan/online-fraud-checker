@@ -14,8 +14,12 @@ create table users(
     username varchar(255) not null,
     password varchar(255) not null,
     email varchar(255) not null,
+    rejectedCount int not null,
+    accountStatus varchar(255) not null,
     created_at timestamp default current_timestamp
 );
+
+drop table users;
 
 create table sellerComplain(
     id int primary key auto_increment,
@@ -135,3 +139,5 @@ select * from customerComplain;
 select * from fakeCustomers;
 
 select * from fakeSellers;
+
+delete from courier;
