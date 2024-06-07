@@ -60,5 +60,7 @@
         <h2>Contact Us</h2>
         <p>If you have any questions about our Terms & Conditions, please contact us.</p>
     </div>
+
+    <script src="js/navbar.js"></script>
 </body>
 </html>

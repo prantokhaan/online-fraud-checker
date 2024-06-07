@@ -7,7 +7,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     // Prepare and execute the SQL statement to retrieve user information
-    $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT id, courierName, courierPassword FROM courierAccount WHERE courierName = ?");
+    if ($stmt === false) {
+        die('Prepare failed: ' . htmlspecialchars($conn->error));
+    }
+
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $stmt->store_result();
@@ -16,16 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_result($userId, $dbUsername, $dbPassword);
         $stmt->fetch();
 
-        // Verify password
-        if (password_verify($password, $dbPassword)) {
-            // Password is correct, set session variables
-            $_SESSION['user_id'] = $userId; // Set user ID to session
-            $_SESSION['username'] = $dbUsername;
-
+        // Verify password (no hashing)
+        if ($password === $dbPassword) {
             // Output JavaScript to set username in localStorage
             echo "<script>
-                localStorage.setItem('username', '" . addslashes($dbUsername) . "');
-                window.location.href = '../index.php';
+                localStorage.setItem('courier', '" . addslashes($dbUsername) . "');
+                window.location.href = './show_bookings.php';
             </script>";
             exit();
         } else {
@@ -43,5 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // If we reach here, it means there was an error
-echo "<script>window.onload = function() { localStorage.setItem('loginError', '" . addslashes($error) . "'); }</script>";
+echo "<script>
+    window.onload = function() { 
+        alert('" . addslashes($error) . "'); 
+        window.location.href = './courierLogin.php';
+    }
+</script>";
 ?>

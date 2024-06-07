@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/footer.css">
     <link rel="icon" href="images/favicon.png">
     <style>
         /* Basic Reset */
@@ -126,5 +127,9 @@
             </div>
         </div>
     </div>
+    <?php include 'landing_page/footer.php'; ?>
+
+    <script src="./js/navbar.js"></script>
+
 </body>
 </html>

@@ -137,5 +137,6 @@
             <button type="submit" class="submit-btn">Send Message</button>
         </form>
     </div>
+    <script src="./js/navbar.js"></script>
 </body>
 </html>

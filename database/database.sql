@@ -71,6 +71,42 @@ create table fakeSellers(
     created_at timestamp default current_timestamp
 );
 
+create table courierAccount(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    courierName varchar(255) not null,
+    courierPassword varchar(255) not null
+);
+
+insert into courierAccount(courierName, courierPassword)
+values ('sundarban', 'sundarban'),
+    ('pathao', 'pathao'),
+    ('shohoz', 'shohoz'),
+    ('lalamove', 'lalamove'),
+    ('redx', 'redx'),
+    ('paperfly', 'paperfly'),
+    ('eCourier', 'eCourier'),
+    ('deliverTiger', 'deliveryTiger'),
+    ('korotoa', 'korotoa'),
+    ('janani', 'janani'),
+    ('seba', 'seba');
+
+select * from courierAccount;
+
+
+create table courier(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    courierName varchar(255) not null,
+    customerName varchar(255) not null,
+    customerPhone varchar(255) not null,
+    sellerName varchar(255) not null,
+    sellerPhone varchar(255) not null,
+    courierBookingId varchar(255) not null,
+    orderedProduct varchar(255) not null,
+    created_at timestamp default current_timestamp
+);
+
+select * from courier;
+
 
 CREATE PROCEDURE IncrementComplainCount(
     IN customerId INT

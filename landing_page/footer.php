@@ -16,11 +16,11 @@
             </div>
             <div class="col-md-4">
                 <h3>Contact Us</h3>
-                <p>Email: info@example.com</p>
-                <p>Phone: +123 456 7890</p>
+                <p>Email: support@ofc.com</p>
+                <p>Phone: +880 987410199</p>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://facebook.com/praan.too" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>

@@ -8,13 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-function logout() {
-  // Remove username from localStorage
-  localStorage.removeItem("username");
-  // Redirect to the login page
-  window.location.href = "../auth/login.php";
-}
-
 
 // Function to check if the user is authenticated
 function checkUserAuthentication() {
@@ -23,12 +16,11 @@ function checkUserAuthentication() {
     if (!username) {
         // If the username is not found, redirect the user to the login page
         alert('User not logged in. Redirecting to home page.');
-        window.location.href = '../index.php'; // Adjust the URL if needed
+        window.location.href = '../auth/login.php'; // Adjust the URL if needed
     }
 }
 
-// Call the checkUserAuthentication function when the DOM content is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    checkUserAuthentication();
-});
+
+
+
 

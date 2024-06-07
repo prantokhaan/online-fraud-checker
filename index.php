@@ -1,9 +1,4 @@
-<?php
-session_start();
-if(isset($_SESSION['username'])) {
-    echo "<script>localStorage.setItem('username', '" . $_SESSION['username'] . "');</script>";
-}
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -63,6 +58,7 @@ if(isset($_SESSION['username'])) {
     <!-- JavaScript -->
     <script src="js/testimonial.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/navbar.js"></script>
 
 </body>
 </html>

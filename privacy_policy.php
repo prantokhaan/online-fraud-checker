@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/footer.css">
     <link rel="icon" href="images/favicon.png">
     <style>
         body {
@@ -70,5 +71,9 @@
             <li>If you have previously agreed to us using your personal information for direct marketing purposes, you may change your mind at any time by writing to or emailing us</li>
         </ul>
     </div>
+    
+    <?php include 'landing_page/footer.php'; ?>
+
+    <script src="js/navbar.js"></script>
 </body>
 </html>
