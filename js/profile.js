@@ -63,7 +63,7 @@ function fetchUserInfo() {
               <span id="account-status">${userInfo.accountStatus}</span>
               ${
                 userInfo.accountStatus.toLowerCase() === "banned"
-                  ? `<button onclick="alert('Request Sent')" class="request-button">Request To Activate Account</button>`
+                  ? `<button onclick="requestToActivate()" class="request-button">Request To Activate Account</button>`
                   : ""
               }
           </div>
@@ -71,6 +71,11 @@ function fetchUserInfo() {
               <label>Rejected Count:</label>
               <span id="rejected-count">${userInfo.rejectedCount}</span>
               <span>(If you hit 5 Rejection, You will be automatically banned)</span>
+          </div>
+          <div class="form-group">
+              <label>Ban Count:</label>
+              <span id="rejected-count">${userInfo.banCount}</span>
+              <span>(If you hit 2 bans, your account will be deleted)</span>
           </div>
           <div class="form-group">
               <label>Account Created At:</label>
@@ -127,6 +132,10 @@ function applyAccountStatusColor(element, status){
       element.style.backgroundColor = "red";
       element.style.color = "white";
       break;
+    case "requested":
+      element.style.backgroundColor = "orange";
+      element.style.color = "white";
+      break;
     default:
       element.style.backgroundColor = "green";
       element.style.color = "white";
@@ -134,6 +143,36 @@ function applyAccountStatusColor(element, status){
   }
 
 }
+
+// Function to handle the request to activate button click
+function requestToActivate() {
+  var username = localStorage.getItem("username");
+  if (username) {
+    // Send an AJAX request to update the user's account status
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../database/update_account_status.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        // Check if the status is successfully updated
+        if (xhr.responseText === "success") {
+          // Reload the page to reflect the changes
+          alert("Request sent to admins, please wait for approval.");
+          window.location.reload();
+        } else {
+          // Display an error message if the update fails
+          alert("Failed to update account status. Please try again.");
+        }
+      } else {
+        // Display an error message if the request fails
+        alert("Error updating account status. Please try again later.");
+      }
+    };
+    // Send the request with the username parameter
+    xhr.send("username=" + username + "&status=requested");
+  }
+}
+
 
 // Call the fetchUserInfo function when the page loads
 window.onload = fetchUserInfo;

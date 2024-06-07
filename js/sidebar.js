@@ -69,7 +69,7 @@ function updateSidebar(userInfo) {
     removeMenuItem(sidebarMenu, "Search Customer");
   }
 
-  if(lowerCaseAccountStatus === "banned"){
+  if(lowerCaseAccountStatus === "banned" || lowerCaseAccountStatus==='requested'){
     removeMenuItem(sidebarMenu, "Complain a Seller");
     removeMenuItem(sidebarMenu, "Complain a Customer");
     removeMenuItem(sidebarMenu, "My Complain History");

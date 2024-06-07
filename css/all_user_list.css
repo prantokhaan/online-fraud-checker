@@ -68,7 +68,6 @@ h2:hover::after {
 /* all_user_list.css */
 
 .filter-option {
-    margin-top: 20px;
     text-align: center;
 }
 
@@ -102,3 +101,37 @@ h2:hover::after {
     display: flex;
     justify-content: space-between;
 }
+
+/* CSS for search box */
+/* CSS for filter, search box, and button */
+.filter-search {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter-option {
+    margin-right: 10px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.btn-search {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-search:hover {
+    background-color: #0056b3;
+}
+

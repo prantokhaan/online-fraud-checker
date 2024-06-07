@@ -75,23 +75,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($user) {
         $rejectedCount = $user['rejectedCount'] + 1;
         $accountStatus = $user['accountStatus'];
+        $banCount = $user['banCount'];
 
         // Increment rejectedCount and update accountStatus if needed
         if ($rejectedCount >= 5) {
             $rejectedCount = 0; // Reset rejectedCount
             $accountStatus = 'banned';
-            echo "<script>
+            $banCount += 1;
+            if($banCount >= 2){
+                $sql = "DELETE FROM users WHERE username = '$userName'";
+                if ($conn->query($sql) === TRUE) {
+                    echo "<script>
+                        alert('Your account has been deleted due to multiple bans.');
+                        localStorage.clear();
+                        window.location.href = '../index.php';
+                    </script>";
+                } else {
+                    echo "Error deleting record: " . $conn->error;
+                }
+            }else{
+                echo "<script>
             alert('You are banned from the system due to multiple rejections.');
             window.location.href = 'profile.php';
             </script>";
+            }
         }
 
         // Update user record
-        $stmt = $conn->prepare("UPDATE users SET rejectedCount = ?, accountStatus = ? WHERE username = ?");
+        $stmt = $conn->prepare("UPDATE users SET rejectedCount = ?, accountStatus = ?, banCount = ? WHERE username = ?");
         if (!$stmt) {
             die("Error preparing statement: " . $conn->error);
         }
-        $stmt->bind_param("iss", $rejectedCount, $accountStatus, $userName);
+        $stmt->bind_param("isss", $rejectedCount, $accountStatus, $banCount, $userName);
         $stmt->execute();
 
         

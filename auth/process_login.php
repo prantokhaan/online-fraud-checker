@@ -30,11 +30,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         } else {
             // Password is incorrect
-            $error = "Incorrect password";
+            echo "<script>
+                alert('Incorrect password');
+                window.location.href = './login.php';
+            </script>";
         }
     } else {
         // No user found with the provided username
-        $error = "Username not found";
+        echo "<script>
+                alert('User not found');
+                window.location.href = './login.php';
+            </script>";
     }
 
     // Close statement and connection

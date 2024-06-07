@@ -71,7 +71,8 @@ span:hover {
 /* view_user.css */
 
 .btn-cancel-subscription,
-.btn-ban-user {
+.btn-ban-user,
+.btn-activate-user {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -88,6 +89,12 @@ span:hover {
 
 .btn-ban-user {
     background-color: #6c757d; /* Grey color */
+    color: #fff;
+    margin-left: 10px; /* Add margin between buttons */
+}
+
+.btn-activate-user {
+    background-color: #28a745; /* Green color */
     color: #fff;
     margin-left: 10px; /* Add margin between buttons */
 }

@@ -16,10 +16,15 @@ create table users(
     email varchar(255) not null,
     rejectedCount int not null,
     accountStatus varchar(255) not null,
+    banCount DEFAULT 0,
     created_at timestamp default current_timestamp
 );
 
-drop table users;
+ALTER TABLE users
+ADD COLUMN banCount INT DEFAULT 0;
+
+
+select * from users;
 
 create table sellerComplain(
     id int primary key auto_increment,
