@@ -1,0 +1,58 @@
+/* Button styling */
+.btn {
+    padding: 20px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 10px; /* Adjust margin as needed */
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Additional styling for edit and delete buttons */
+.edit-btn {
+    background-color: #28a745;
+    padding: 10px 20px; 
+    color: white;
+    border-radius: 5px;
+    margin-right: 5px;
+    border: none;
+}
+
+.edit-btn:hover {
+    background-color: #218838;
+    border: none;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 5px;
+    margin-right: 5px;
+    border: none;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+    border: none;
+}
+
+.edit-image-btn {
+    background-color: #ffc107;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 5px;
+    margin-right: 5px;
+    border: none;
+}
+
+.edit-image-btn:hover {
+    background-color: #e0a800;
+    border: none;
+}

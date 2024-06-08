@@ -1,0 +1,106 @@
+/* view_user.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.container {
+    margin-left: 280px; /* Adjusted margin */
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    width: 50px;
+    height: 3px;
+    background-color: #007bff;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+h2:hover::after {
+    width: 100px;
+}
+
+.user-info {
+    margin-top: 20px;
+}
+
+.info-item {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: #555;
+}
+
+span {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+span:hover {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+/* view_user.css */
+
+.btn-cancel-subscription,
+.btn-ban-user,
+.btn-activate-user {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-cancel-subscription {
+    background-color: #dc3545; /* Red color */
+    color: #fff;
+}
+
+.btn-ban-user {
+    background-color: #6c757d; /* Grey color */
+    color: #fff;
+    margin-left: 10px; /* Add margin between buttons */
+}
+
+.btn-activate-user {
+    background-color: #28a745; /* Green color */
+    color: #fff;
+    margin-left: 10px; /* Add margin between buttons */
+}
+
+.btn-cancel-subscription:hover,
+.btn-ban-user:hover {
+    background-color: #c82333; /* Darker red or grey color on hover */
+    transform: translateY(-2px);
+}

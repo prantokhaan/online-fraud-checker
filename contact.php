@@ -121,10 +121,10 @@
     <?php include 'landing_page/navbar.php'; ?>
     <div class="contact-container">
         <h1>Contact Us</h1>
-        <form action="#">
+        <form action="process_contact.php" method="POST">
             <div class="form-group">
-                <label for="name">Your Name:</label>
-                <input type="text" id="name" name="name" required>
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
             </div>
             <div class="form-group">
                 <label for="email">Your Email:</label>

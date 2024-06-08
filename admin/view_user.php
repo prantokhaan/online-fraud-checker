@@ -140,8 +140,8 @@ $conn->close();
     <title>View User</title>
     <!-- Import bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/view_user.css">
-    <link rel="stylesheet" href="../css/admin_sidebar.css">
+    <link rel="stylesheet" href="./css/view_user.css">
+    <link rel="stylesheet" href="./css/admin_sidebar.css">
     <link rel="icon" href="../images/favicon.png">
 </head>
 <body>

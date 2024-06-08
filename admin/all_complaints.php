@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Complaint List</title>
-    <link rel="stylesheet" href="../css/admin_sidebar.css">
-    <link rel="stylesheet" href="../css/all_user_list.css">
+    <link rel="stylesheet" href="./css/admin_sidebar.css">
+    <link rel="stylesheet" href="./css/all_user_list.css">
     <link rel="icon" href="../images/favicon.png">
     <!-- Add your other stylesheets here -->
 </head>
