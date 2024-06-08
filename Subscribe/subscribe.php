@@ -1,3 +1,22 @@
+<?php
+include '../database/db.php'; // Include your database connection file
+
+// Fetch all pricing plans from the database
+$query = "SELECT * FROM pricing";
+$result = $conn->query($query);
+
+$plans = [];
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $plans[] = $row;
+    }
+}
+
+$conn->close();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,42 +98,20 @@
         <h2 class="section-title">Pricing & Plans</h2>
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="plan">
-                        <h3>Basic</h3>
-                        <p class="price">$10/month</p>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Feature 1</li>
-                            <li><i class="fas fa-check-circle"></i> Feature 2</li>
-                            <li><i class="fas fa-times-circle"></i> Feature 3</li>
-                        </ul>
-                        <button onclick="subscribe('Basic')" class="btn">Grab Now</button>
+                <?php foreach ($plans as $plan): ?>
+                    <div class="col-md-4">
+                        <div class="plan">
+                            <h3><?php echo htmlspecialchars($plan['packageName']); ?></h3>
+                            <p class="price">$<?php echo htmlspecialchars($plan['price']); ?>/month</p>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Feature 1</li>
+                                <li><i class="fas fa-check-circle"></i> Feature 2</li>
+                                <li><i class="fas fa-times-circle"></i> Feature 3</li>
+                            </ul>
+                            <button onclick="subscribe('<?php echo htmlspecialchars($plan['packageName']); ?>')" class="btn">Grab Now</button>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="plan">
-                        <h3>Standard</h3>
-                        <p class="price">$20/month</p>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Feature 1</li>
-                            <li><i class="fas fa-check-circle"></i> Feature 2</li>
-                            <li><i class="fas fa-check-circle"></i> Feature 3</li>
-                        </ul>
-                        <button onclick="subscribe('Standard')" class="btn">Grab Now</button>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="plan">
-                        <h3>Premium</h3>
-                        <p class="price">$30/month</p>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Feature 1</li>
-                            <li><i class="fas fa-check-circle"></i> Feature 2</li>
-                            <li><i class="fas fa-check-circle"></i> Feature 3</li>
-                        </ul>
-                        <button onclick="subscribe('Premium')" class="btn">Grab Now</button>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>

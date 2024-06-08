@@ -18,6 +18,11 @@
     <!-- Include the sidebar using PHP -->
     <?php include '../shared/sidebar.php'; ?>
     
+    <?php
+    if(isset($_GET['error']) && $_GET['error'] == 'accepted_complaint_exists'){
+        echo '<div class="alert alert-danger" style="margin-left: 280px; padding-top: 10px;">You have already filed an accepted complaint with these details.</div>';
+    }
+    ?>
     <!-- Main Content -->
     <div class="main-content">
         <div class="container">

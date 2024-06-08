@@ -19,6 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Passwords do not match.");
     }
 
+    if($registerAs == 'seller' && empty($shopName)) {
+        header("Location: register.php?error=shop_name_required");
+        exit();
+    }
+
     // Check if username already exists
     $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);

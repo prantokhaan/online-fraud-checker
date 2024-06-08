@@ -118,6 +118,20 @@ create table courier(
     created_at timestamp default current_timestamp
 );
 
+create table review(
+    id int primary key AUTO_INCREMENT,
+    reviewerName varchar(255) not null,
+    review varchar(255) not null
+);
+
+create table pricing(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    packageName varchar(255) not null,
+    price int not null
+);
+
+select * from review;
+
 select * from courier;
 
 

@@ -8,35 +8,35 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
+    $username = $_POST['username'];
     $oldPassword = $_POST['oldPassword'];
     $newPassword = $_POST['newPassword'];
     $confirmNewPassword = $_POST['confirmNewPassword'];
 
     // Validate inputs
     if ($newPassword !== $confirmNewPassword) {
-        echo "New password and confirm password do not match.";
+        header("Location: change_password.php?error=password_mismatch");
         exit();
     }
 
     // Check if email exists in the database
-    $stmt = $conn->prepare("SELECT id, password FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT id, password FROM users WHERE username = ?");
     if (!$stmt) {
         die("Error preparing statement: " . $conn->error);
     }
-    $stmt->bind_param("s", $email);
+    $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
 
     if (!$user) {
-        echo "Email not found.";
+        header("Location: change_password.php?error=username_not_found");
         exit();
     }
 
     // Verify old password
     if (!password_verify($oldPassword, $user['password'])) {
-        echo "Incorrect old password.";
+        header("Location: change_password.php?error=incorrect_password");
         exit();
     }
 
@@ -52,7 +52,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute()) {
         // Password changed successfully
         $_SESSION['password_change_success'] = true;
-        header("Location: change_password.php");
+        echo "<script>
+            alert('Password changed successfully.');
+            window.location.href = 'profile.php';
+        </script>";
         exit();
     } else {
         $_SESSION['password_change_error'] = "Error updating password: " . $stmt->error;

@@ -29,11 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
-        echo "<script>
-            alert('You have already filed an accepted complaint with these details.');
-            window.location.href = 'profile.php';
-        </script>";
-        exit;
+        header("Location: customer_complain.php?error=accepted_complaint_exists");
+        exit();
     }
 
     // Step 2: Search with the courierBookingId in the courier table

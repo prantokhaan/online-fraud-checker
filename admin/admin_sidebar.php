@@ -11,5 +11,11 @@
         <li>
             <a href="../admin/all_courier_list.php">View Couriers</a>
         </li>
+        <li>
+            <a href="../admin/add_pricing.php">Add Package</a>
+        </li>
+        <li>
+            <a href="../admin/view_packages.php">View Packages</a>
+        </li>
     </ul>
 </div>

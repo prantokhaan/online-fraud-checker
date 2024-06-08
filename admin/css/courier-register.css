@@ -11,6 +11,7 @@ body {
     color: #333;
     display: flex;
     justify-content: center;
+    text-transform: capitalize;
 }
 
 /* Main Content */

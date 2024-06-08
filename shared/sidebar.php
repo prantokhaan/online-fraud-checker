@@ -14,9 +14,12 @@
         <li><a href="../profile/change_password.php">Change Password</a></li>
         <li><a href="../profile/fake_customer_list.php">Fake Customer List</a></li>
         <li><a href="../profile/fake_shop_list.php">Fake Shop List</a></li>
-        <li><a href="../profile/trusted_shop_list.php">Trusted Shop List</a></li>
+        <li><a href="../profile/courier_list.php">Courier List</a> </li>
+        <li><a href="../profile/all_customer_complain.php">All Customer Complain</a> </li>
+        <li><a href="../profile/all_seller_complain.php">All Seller Complain</a> </li>
         <li><a href="../profile/search.php">Search</a></li>
         <li><a href="../profile/search_customer.php">Search Customer</a></li>
+        <li><a href="../testimonial/give_review.php">Give Review on Us</a></li>
         <li><a href="#">Logout</a></li>
     </ul>
 </div>

@@ -17,6 +17,14 @@
                 return false;
             }
 
+            // check if user is an seller and gave input the shop name
+            var registerAs = document.getElementById('registerAs').value;
+            var shopName = document.getElementById('shopName').value;
+            if (registerAs === 'seller' && shopName === '') {
+                alert("Please enter your shop name.");
+                return false;
+            }
+
             // Check if passwords match
             var password = document.getElementById('password').value;
             var confirmPassword = document.getElementById('confirmPassword').value;
@@ -36,6 +44,8 @@
             <?php
             if (isset($_GET['error']) && $_GET['error'] == 'username_exists') {
                 echo '<div class="alert alert-danger">Username already exists. Please choose another one.</div>';
+            }else if(isset($_GET['error']) && $_GET['error'] == 'shop_name_required'){
+                echo '<div class="alert alert-danger">Shop name is required for seller registration.</div>';
             }
             ?>
             <form action="process_register.php" method="post">

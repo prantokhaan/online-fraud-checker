@@ -1,4 +1,37 @@
+<?php
+include 'database/db.php'; // Include your database connection file
 
+$query = "SELECT reviewerName, review FROM review";
+$result = $conn->query($query);
+
+$reviews = [];
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $reviews[] = $row;
+    }
+}
+
+$conn->close();
+?>
+
+<?php
+include 'database/db.php'; // Include your database connection file
+
+// Fetch all pricing plans from the database
+$query = "SELECT * FROM pricing";
+$result = $conn->query($query);
+
+$plans = [];
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $plans[] = $row;
+    }
+}
+
+$conn->close();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,35 +63,60 @@
     <?php include 'landing_page/benefit.php'; ?>
     <?php include 'landing_page/features.php'; ?>
     <?php include 'landing_page/pricing.php'; ?>
-    <?php include 'landing_page/testimonial.php'; ?>
-    <?php include 'landing_page/footer.php'; ?>
+    
+    <section id="testimonials" class="section">
+        <h2 class="section-title">Testimonials</h2>
+        <div class="container">
+            <div class="testimonial-bar">
+                <?php
+                // Display testimonials from the review table
+                foreach ($reviews as $index => $review) {
+                    $imageIndex = $index % 5 + 1; // Cycle through images 1 to 5
+                    $imagePath = "images/review_image/{$imageIndex}.png"; // Construct the image path
 
+                    echo '<div class="testimonial-item">';
+                    echo '<img src="' . htmlspecialchars($imagePath) . '" alt="Testimonial Author" width="100" height="100">';
+                    echo '<div class="testimonial-info">';
+                    echo '<h3>' . htmlspecialchars($review["reviewerName"]) . '</h3>';
+                    echo '<p>"' . htmlspecialchars($review["review"]) . '"</p>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+                ?>
+            </div>
+        </div>
+    </section>
+
+    <?php include 'landing_page/footer.php'; ?>
 
     <!-- Modal -->
     <div class="modal" id="confirmDeleteModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Confirmation</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to delete this complaint?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" id="confirmDeleteBtn" class="btn btn-danger">Delete</button>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirmation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete this complaint?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" id="confirmDeleteBtn" class="btn btn-danger">Delete</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
     <!-- JavaScript -->
     <script src="js/testimonial.js"></script>
     <script src="js/main.js"></script>
     <script src="js/navbar.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>

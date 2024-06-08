@@ -59,15 +59,23 @@
             $('#errorModal').modal('show');
         </script>
     <?php endif; ?>
-
+        <?php if(isset($_GET['error']) && $_GET['error'] == 'incorrect_password') {
+            echo "<div class='alert alert-danger'>Incorrect old password.</div>";
+        }else if(isset($_GET['error']) && $_GET['error'] == 'username_not_found'){
+            echo "<div class='alert alert-danger'>Username not found. Please try again.</div>";
+        }else if(isset($_GET['error']) && $_GET['error'] == 'password_mismatch'){
+            echo "<div class='alert alert-danger'>Passwords do not match.</div>";
+        }
+        
+        ?>
     <!-- Change Password Form -->
     <div class="main-content">
         <div class="change-password-container">
             <h2>Change Password</h2>
             <form action="process_change_password.php" method="post">
                 <div class="form-group">
-                    <label for="email">Your Email:</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                    <label for="username">Your Email:</label>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Enter your username" required>
                 </div>
                 <div class="form-group">
                     <label for="oldPassword">Old Password:</label>

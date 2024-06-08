@@ -11,6 +11,11 @@
 </head>
 <body>
     <?php include '../landing_page/navbar.php'; ?>
+    <?php if(isset($_GET['error']) && $_GET['error'] == 'username_not_found') {
+        $error = 'Username not found. Please try again.';
+    } else if(isset($_GET['error']) && $_GET['error'] == 'incorrect_password') {
+        $error = 'Incorrect password. Please try again.';
+    } ?>
     <div class="login-container">
         <div class="login-image">
             <img src="../images/login.png" alt="Login Image">

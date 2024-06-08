@@ -56,41 +56,7 @@
         </div>
     </div>
 
-<script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check if the user is logged in and redirect to index.php if not
-            var username = localStorage.getItem('username');
-            if (username) {
-                checkSubscriptionStatus(username);
-            } else {
-                alert('User not logged in. Redirecting to home page.');
-                window.location.href = '../index.php';
-            }
-        });
 
-        function checkSubscriptionStatus(username) {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', '../Subscribe/get_subscription_status.php?username=' + encodeURIComponent(username), true);
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    if (response.subscriberStatus === 'None') {
-                        alert('Please buy a subscription to view this page.');
-                        window.location.href = '../Subscribe/subscribe.php';
-                    }else if(response.subscriberStatus === 'Basic'){
-                        alert("Please buy a Standard Plan to view this page");
-                        window.location.href = '../Subscribe/subscribe.php';
-                    }
-                    
-                    else {
-                        document.querySelector('.main-content').style.display = 'block';
-                    }
-                } else {
-                    console.error('Error checking subscription status:', xhr.statusText);
-                }
-            };
-            xhr.send();
-        }
-    </script>
+    
 </body>
 </html>

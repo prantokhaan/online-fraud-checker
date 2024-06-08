@@ -36,15 +36,16 @@ function updateSidebar(userInfo) {
     // Remove "Complain a Seller" if the user is a seller
     removeMenuItem(sidebarMenu, "Complain a Seller");
     removeMenuItem(sidebarMenu, "Fake Shop List");
-    removeMenuItem(sidebarMenu, "Trusted Shop List");
     removeMenuItem(sidebarMenu, "My Complain History");
     removeMenuItem(sidebarMenu, "Search");
+    removeMenuItem(sidebarMenu, "All Seller Complain");
   } else if (lowerCaseRegisterAs === "customer") {
     // Remove "Complain a Customer" if the user is a customer
     removeMenuItem(sidebarMenu, "Complain a Customer");
     removeMenuItem(sidebarMenu, "Fake Customer List");
     removeMenuItem(sidebarMenu, "Complain History");
     removeMenuItem(sidebarMenu, "Search Customer");
+    removeMenuItem(sidebarMenu, "All Customer Complain");
   }
 
   if (
@@ -58,15 +59,21 @@ function updateSidebar(userInfo) {
     removeMenuItem(sidebarMenu, "Search Customer");
     removeMenuItem(sidebarMenu, "Search");
     removeMenuItem(sidebarMenu, "Fake Shop List");
-    removeMenuItem(sidebarMenu, "Trusted Shop List");
+    removeMenuItem(sidebarMenu, "Fake Customer List");
+    removeMenuItem(sidebarMenu, "All Customer Complain");
+    removeMenuItem(sidebarMenu, "All Seller Complain");
   } else if (lowerCaseSubscriberStatus === "basic") {
     removeMenuItem(sidebarMenu, "Fake Shop List");
-    removeMenuItem(sidebarMenu, "Trusted Shop List");
     removeMenuItem(sidebarMenu, "Search");
     removeMenuItem(sidebarMenu, "Search Customer");
+    removeMenuItem(sidebarMenu, "Fake Customer List");
+    removeMenuItem(sidebarMenu, "All Customer Complain");
+    removeMenuItem(sidebarMenu, "All Seller Complain");
   } else if (lowerCaseSubscriberStatus === "standard") {
     removeMenuItem(sidebarMenu, "Search");
     removeMenuItem(sidebarMenu, "Search Customer");
+    removeMenuItem(sidebarMenu, "All Customer Complain");
+    removeMenuItem(sidebarMenu, "All Seller Complain");
   }
 
   if(lowerCaseAccountStatus === "banned" || lowerCaseAccountStatus==='requested'){
@@ -77,7 +84,6 @@ function updateSidebar(userInfo) {
     removeMenuItem(sidebarMenu, "Search Customer");
     removeMenuItem(sidebarMenu, "Search");
     removeMenuItem(sidebarMenu, "Fake Shop List");
-    removeMenuItem(sidebarMenu, "Trusted Shop List");
     removeMenuItem(sidebarMenu, "Change Password");
   }
 
