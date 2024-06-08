@@ -2,7 +2,7 @@
 include '../database/db.php'; // Include your database connection file
 
 $filter = isset($_GET['filter']) ? $_GET['filter'] : 'all';
-$query = "SELECT id, courierName, userName, complainStatus FROM customerComplain";
+$query = "SELECT id, courierName, userName, complainStatus FROM sellerComplain";
 
 if ($filter == 'accepted') {
     $query .= " WHERE complainStatus = 'accepted'";
@@ -25,13 +25,13 @@ $result = $conn->query($query);
     <script>
         function confirmDelete(id) {
             if (confirm('Are you sure you want to delete this complaint?')) {
-                window.location.href = 'delete_customer_complaint.php?id=' + id;
+                window.location.href = 'delete_seller_complaint.php?id=' + id;
             }
         }
 
         function applyFilter() {
             const filter = document.getElementById('filter').value;
-            window.location.href = 'all_complaints.php?filter=' + filter;
+            window.location.href = 'all_seller_complaints.php?filter=' + filter;
         }
     </script>
 </head>
@@ -73,7 +73,7 @@ $result = $conn->query($query);
                             echo "<td>" . htmlspecialchars($row['userName']) . "</td>";
                             echo "<td>" . htmlspecialchars($row['complainStatus']) . "</td>";
                             echo "<td>
-                                    <a href='view_complaint.php?id=" . $row['id'] . "'>View Complaint</a> |
+                                    <a href='view_seller_complaint.php?id=" . $row['id'] . "'>View Complaint</a> |
                                     <button type='button' onclick='confirmDelete(" . $row['id'] . ")'>Delete</button>
                                   </td>";
                             echo "</tr>";

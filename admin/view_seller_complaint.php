@@ -3,7 +3,7 @@ include '../database/db.php'; // Include your database connection file
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $stmt = $conn->prepare("SELECT * FROM customerComplain WHERE id = ?");
+    $stmt = $conn->prepare("SELECT * FROM sellerComplain WHERE id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
 } else {
     echo "<script>
         alert('Invalid request.');
-        window.location.href = 'all_complaints.php';
+        window.location.href = 'all_seller_complaints.php';
     </script>";
     exit;
 }
@@ -30,13 +30,13 @@ if (isset($_GET['id'])) {
     <script>
         function changeStatus(id, status) {
             if (confirm('Are you sure you want to ' + status + ' this complaint?')) {
-                window.location.href = 'change_customer_complaint_status.php?id=' + id + '&status=' + status;
+                window.location.href = 'change_seller_complaint_status.php?id=' + id + '&status=' + status;
             }
         }
 
         function confirmDelete(id) {
             if (confirm('Are you sure you want to delete this complaint?')) {
-                window.location.href = 'delete_customer_complaint.php?id=' + id;
+                window.location.href = 'delete_seller_complaint.php?id=' + id;
             }
         }
     </script>
@@ -59,24 +59,24 @@ if (isset($_GET['id'])) {
                     <span><?php echo htmlspecialchars($complaint['userName']); ?></span>
                 </div>
                 <div class="info-item">
-                    <label>Customer Name:</label>
-                    <span><?php echo htmlspecialchars($complaint['customerName']); ?></span>
+                    <label>Seller Name:</label>
+                    <span><?php echo htmlspecialchars($complaint['sellerName']); ?></span>
                 </div>
                 <div class="info-item">
-                    <label>Customer Email:</label>
-                    <span><?php echo htmlspecialchars($complaint['customerEmail']); ?></span>
+                    <label>Seller Email:</label>
+                    <span><?php echo htmlspecialchars($complaint['sellerEmail']); ?></span>
                 </div>
                 <div class="info-item">
-                    <label>Customer Phone:</label>
-                    <span><?php echo htmlspecialchars($complaint['customerPhone']); ?></span>
+                    <label>Seller Phone:</label>
+                    <span><?php echo htmlspecialchars($complaint['sellerPhone']); ?></span>
                 </div>
                 <div class="info-item">
-                    <label>Customer Address:</label>
-                    <span><?php echo htmlspecialchars($complaint['customerAddress']); ?></span>
+                    <label>Seller Address:</label>
+                    <span><?php echo htmlspecialchars($complaint['sellerAddress']); ?></span>
                 </div>
                 <div class="info-item">
-                    <label>Customer FB Link:</label>
-                    <span><?php echo htmlspecialchars($complaint['customerFBLink']); ?></span>
+                    <label>Seller FB Link:</label>
+                    <span><?php echo htmlspecialchars($complaint['sellerFBLink']); ?></span>
                 </div>
                 <div class="info-item">
                     <label>Courier Name:</label>
