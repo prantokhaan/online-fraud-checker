@@ -69,6 +69,10 @@ create table fakeCustomers(
     created_at timestamp default current_timestamp
 );
 
+drop table fakeCustomers;
+
+select * from fakeCustomers;
+
 create table fakeSellers(
     id int primary key auto_increment,
     sellerName varchar(255) not null,
@@ -146,3 +150,5 @@ select * from fakeCustomers;
 select * from fakeSellers;
 
 delete from courier;
+
+select username, fullName from users where id = 1;

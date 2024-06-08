@@ -42,24 +42,24 @@
                     <input type="text" id="customerAddress" name="customerAddress" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="customerFacebookId">Customer Facebook ID:</label>
-                    <input type="text" id="customerFacebookId" name="customerFacebookId" class="form-control">
+                    <label for="customerFBLink">Customer Facebook ID:</label>
+                    <input type="text" id="customerFBLink" name="customerFBLink" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="courierName">Courier Name:</label>
                     <input type="text" id="courierName" name="courierName" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="courierDeliveryId">Courier Delivery ID:</label>
-                    <input type="text" id="courierDeliveryId" name="courierDeliveryId" class="form-control" required>
+                    <label for="courierBookingId">Courier Delivery ID:</label>
+                    <input type="text" id="courierBookingId" name="courierBookingId" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="orderedProduct">Ordered Product:</label>
                     <input type="text" id="orderedProduct" name="orderedProduct" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="proofImageLink">Image Link of Proofs:</label>
-                    <input type="url" id="proofImageLink" name="proofImageLink" class="form-control" required>
+                    <label for="imageLink">Image Link of Proofs:</label>
+                    <input type="url" id="imageLink" name="imageLink" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>
