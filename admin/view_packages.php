@@ -24,6 +24,7 @@ $conn->close();
     <title>View Packages</title>
     <link rel="stylesheet" href="./css/admin_sidebar.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="../images/favicon.png">
     <style>
         .main-content {
             margin-left: 280px;

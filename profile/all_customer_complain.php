@@ -27,7 +27,7 @@ $conn->close();
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/complain_history.css">
     <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="../images/favicon.png">
     <style>
         .main-content {
             display: block;

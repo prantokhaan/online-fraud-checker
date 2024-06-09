@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="../css/complain_history.css">
     <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="../images/favicon.png">
     <style>
         .main-content {
             display: none;

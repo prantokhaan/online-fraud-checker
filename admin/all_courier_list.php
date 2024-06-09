@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/admin_sidebar.css">
     <link rel="stylesheet" href="css/all_user_list.css">
     <link rel="stylesheet" href="css/all_courier_list.css">
+    <!-- Favicon  -->
+    <link rel="icon" href="../images/favicon.png">
 </head>
 <body>
     <?php include 'admin_sidebar.php'; ?>

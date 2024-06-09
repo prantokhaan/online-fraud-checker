@@ -6,6 +6,7 @@
     <title>Register Courier</title>
     <link rel="stylesheet" href="./css/courier-register.css">
     <link rel="stylesheet" href="./css/admin_sidebar.css">
+    <link rel="icon" href="../images/favicon.png">
 </head>
 <body>
     <?php include './admin_sidebar.php'; ?>
