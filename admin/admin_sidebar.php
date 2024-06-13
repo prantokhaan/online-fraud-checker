@@ -17,5 +17,8 @@
         <li>
             <a href="../admin/view_packages.php">View Packages</a>
         </li>
+        <li>
+            <a href="../admin/deleted_user_list.php">Deleted Users</a>
+        </li>
     </ul>
 </div>

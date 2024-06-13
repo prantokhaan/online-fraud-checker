@@ -115,18 +115,45 @@ if (isset($_POST['activate_user'])) {
 }
 
 if (isset($_POST['delete_user'])) {
-    // Delete the user from the database
-    $deleteQuery = "DELETE FROM users WHERE id = '$userId'";
-    if ($conn->query($deleteQuery) === TRUE) {
-        // Redirect to a page indicating user deletion success
-        header("Location: user_deleted.php");
-        exit();
+    // Fetch the user's data before deleting
+    $selectQuery = "SELECT * FROM users WHERE id = '$userId'";
+    $result = $conn->query($selectQuery);
+
+    if ($result->num_rows > 0) {
+        // Fetch user data
+        $userData = $result->fetch_assoc();
+
+        // Insert the user's data into the deletedUser table
+        $insertQuery = "INSERT INTO deletedUser (registerAs, fullName, shopName, subscriberStatus, age, phoneNumber, address, username, password, email, rejectedCount, accountStatus, banCount, created_at)
+                        VALUES ('".$userData['registerAs']."', '".$userData['fullName']."', '".$userData['shopName']."', '".$userData['subscriberStatus']."', '".$userData['age']."', '".$userData['phoneNumber']."', '".$userData['address']."', '".$userData['username']."', '".$userData['password']."', '".$userData['email']."', '".$userData['rejectedCount']."', '".$userData['accountStatus']."', '".$userData['banCount']."', '".$userData['created_at']."')";
+
+        if ($conn->query($insertQuery) === TRUE) {
+            // Delete the user from the users table
+            $deleteQuery = "DELETE FROM users WHERE id = '$userId'";
+            if ($conn->query($deleteQuery) === TRUE) {
+                echo "<script>
+                    alert('User deleted successfully.') 
+                    window.location.href = 'all_user_list.php';
+                    </script>";
+                
+                exit();
+            } else {
+                // Redirect to view user page with error message
+                header("Location: view_user.php?id=$userId&status=error");
+                exit();
+            }
+        } else {
+            // Redirect to view user page with error message
+            header("Location: view_user.php?id=$userId&status=error");
+            exit();
+        }
     } else {
         // Redirect to view user page with error message
         header("Location: view_user.php?id=$userId&status=error");
         exit();
     }
 }
+
 
 // Close the database connection
 $conn->close();
@@ -200,7 +227,7 @@ $conn->close();
                         <button type="submit" name="cancel_subscription" class="btn-cancel-subscription">Cancel Subscription</button>
                         <button type="submit" name="ban_user" class="btn-ban-user">Ban User</button>
                         <button type="submit" name="activate_user" class="btn-activate-user">Activate User</button>
-                        <button type="submit" name="activate_user" class="btn-cancel-subscription" style="margin-left: 10px">Delete this User</button>
+                        <button type="submit" name="delete_user" class="btn-cancel-subscription" style="margin-left: 10px">Delete this User</button>
                     </div>
                 </form>
             </div>

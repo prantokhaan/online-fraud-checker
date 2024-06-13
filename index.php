@@ -1,5 +1,5 @@
 <?php
-include 'database/db.php'; // Include your database connection file
+include 'database/db.php';
 
 $query = "SELECT reviewerName, review FROM review";
 $result = $conn->query($query);

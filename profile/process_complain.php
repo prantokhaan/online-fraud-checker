@@ -116,27 +116,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Increment rejectedCount and update accountStatus if needed
             if ($rejectedCount >= 5) {
-                $rejectedCount = 0; // Reset rejectedCount
-                $accountStatus = 'banned';
-                $banCount += 1;
-                if ($banCount >= 2) {
-                    $sql = "DELETE FROM users WHERE username = '$userName'";
-                    if ($conn->query($sql) === TRUE) {
-                        echo "<script>
-                            alert('Your account has been deleted due to multiple bans.');
-                            localStorage.clear();
-                            window.location.href = '../index.php';
-                        </script>";
-                    } else {
-                        echo "Error deleting record: " . $conn->error;
-                    }
-                } else {
-                    echo "<script>
-                        alert('You are banned from the system due to multiple rejections.');
-                        window.location.href = 'profile.php';
-                    </script>";
-                }
+    $rejectedCount = 0; // Reset rejectedCount
+    $accountStatus = 'banned';
+    $banCount += 1;
+    
+    if ($banCount >= 2) {
+        // Insert user data into deletedUser table before deletion
+        $sqlInsert = "INSERT INTO deletedUser (registerAs, fullName, shopName, subscriberStatus, age, phoneNumber, address, username, password, email, rejectedCount, accountStatus, banCount, created_at)
+                      SELECT registerAs, fullName, shopName, subscriberStatus, age, phoneNumber, address, username, password, email, rejectedCount, accountStatus, banCount, created_at 
+                      FROM users 
+                      WHERE username = '$userName'";
+        
+        if ($conn->query($sqlInsert) === TRUE) {
+            // Delete user from users table
+            $sqlDelete = "DELETE FROM users WHERE username = '$userName'";
+            if ($conn->query($sqlDelete) === TRUE) {
+                echo "<script>
+                    alert('Your account has been deleted due to multiple bans.');
+                    localStorage.clear();
+                    window.location.href = '../index.php';
+                </script>";
+            } else {
+                echo "Error deleting record: " . $conn->error;
             }
+        } else {
+            echo "Error inserting record: " . $conn->error;
+        }
+    } else {
+        echo "<script>
+            alert('You are banned from the system due to multiple rejections.');
+            window.location.href = 'profile.php';
+        </script>";
+    }
+}
+
 
             // Update user record
             $stmt = $conn->prepare("UPDATE users SET rejectedCount = ?, accountStatus = ?, banCount = ? WHERE username = ?");

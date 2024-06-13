@@ -62,6 +62,7 @@ function updateSidebar(userInfo) {
     removeMenuItem(sidebarMenu, "Fake Customer List");
     removeMenuItem(sidebarMenu, "All Customer Complain");
     removeMenuItem(sidebarMenu, "All Seller Complain");
+    removeMenuItem(sidebarMenu, "Courier List");
   } else if (lowerCaseSubscriberStatus === "basic") {
     removeMenuItem(sidebarMenu, "Fake Shop List");
     removeMenuItem(sidebarMenu, "Search");
@@ -69,11 +70,13 @@ function updateSidebar(userInfo) {
     removeMenuItem(sidebarMenu, "Fake Customer List");
     removeMenuItem(sidebarMenu, "All Customer Complain");
     removeMenuItem(sidebarMenu, "All Seller Complain");
+    removeMenuItem(sidebarMenu, "Courier List");
   } else if (lowerCaseSubscriberStatus === "standard") {
     removeMenuItem(sidebarMenu, "Search");
     removeMenuItem(sidebarMenu, "Search Customer");
     removeMenuItem(sidebarMenu, "All Customer Complain");
     removeMenuItem(sidebarMenu, "All Seller Complain");
+    removeMenuItem(sidebarMenu, "Courier List");
   }
 
   if(lowerCaseAccountStatus === "banned" || lowerCaseAccountStatus==='requested'){
@@ -85,6 +88,10 @@ function updateSidebar(userInfo) {
     removeMenuItem(sidebarMenu, "Search");
     removeMenuItem(sidebarMenu, "Fake Shop List");
     removeMenuItem(sidebarMenu, "Change Password");
+    removeMenuItem(sidebarMenu, "Fake Customer List");
+    removeMenuItem(sidebarMenu, "All Customer Complain");
+    removeMenuItem(sidebarMenu, "All Seller Complain");
+    removeMenuItem(sidebarMenu, "Courier List");
   }
 
   // Add logout functionality
