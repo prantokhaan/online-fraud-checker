@@ -8,7 +8,6 @@ $error_message = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['courier_name']) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
     $courier_name = $_POST['courier_name'];
 
-    // Use a prepared statement to prevent SQL injection
     $stmt = $conn->prepare("SELECT * FROM courier WHERE courierName = ?");
     $stmt->bind_param("s", $courier_name);
     $stmt->execute();

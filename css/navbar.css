@@ -89,3 +89,37 @@ body {
     font-family: Poppins, sans-serif;
     font-weight: normal;
 }
+
+
+@media (max-width: 768px) {
+    .navbar-container {
+        padding: 10px 20px; /* Adjust padding for smaller screens */
+    }
+
+    .nav-links li {
+        display: none; /* Hide navigation links */
+    }
+
+    .auth-buttons {
+        margin-right: 0; /* Remove margin between buttons */
+    }
+
+    .auth-buttons a {
+        margin-right: 0; /* Remove individual button margin */
+    }
+
+    .nav-links {
+        display: none; /* Ensure navigation links are hidden */
+    }
+
+    .logo-link {
+        font-size: 24px; /* Decrease font size for smaller screens */
+    }
+
+    .auth-buttons {
+        position: absolute;
+        right: 20px; /* Position auth buttons to the right */
+        top: 50%; /* Vertically center auth buttons */
+        transform: translateY(-50%);
+    }
+}

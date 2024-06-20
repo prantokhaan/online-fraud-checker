@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include '../database/db.php'; // Include your database connection file
+    include '../database/db.php';
 
     $courierName = htmlspecialchars($_POST['courierName']);
     $courierPassword = htmlspecialchars($_POST['courierPassword']);

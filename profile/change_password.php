@@ -74,7 +74,7 @@
             <h2>Change Password</h2>
             <form action="process_change_password.php" method="post">
                 <div class="form-group">
-                    <label for="username">Your Email:</label>
+                    <label for="username">Your Username:</label>
                     <input type="text" id="username" name="username" class="form-control" placeholder="Enter your username" required>
                 </div>
                 <div class="form-group">

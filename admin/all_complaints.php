@@ -21,7 +21,6 @@ $result = $conn->query($query);
     <link rel="stylesheet" href="./css/admin_sidebar.css">
     <link rel="stylesheet" href="./css/all_user_list.css">
     <link rel="icon" href="../images/favicon.png">
-    <!-- Add your other stylesheets here -->
     <script>
         function confirmDelete(id) {
             if (confirm('Are you sure you want to delete this complaint?')) {

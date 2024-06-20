@@ -20,6 +20,10 @@ create table users(
     created_at timestamp default current_timestamp
 );
 
+select * from users;
+
+
+
 drop table users;
 
 ALTER TABLE users

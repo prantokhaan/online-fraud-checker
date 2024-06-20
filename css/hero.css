@@ -55,3 +55,30 @@
     max-width: 100%; /* Ensure image fits container */
     height: auto;
 }
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 20px; /* Decrease padding on smaller screens */
+    }
+
+    .heroContainer {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+
+    .hero-content {
+        padding: 20px; /* Maintain padding */
+    }
+
+    .btn {
+        padding: 10px 20px; /* Adjust button padding */
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content h1 {
+        font-size: 28px; /* Decrease heading font size */
+    }
+
+    .hero-content p {
+        font-size: 16px; /* Decrease paragraph font size */
+    }
+}

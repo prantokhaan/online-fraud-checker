@@ -121,3 +121,39 @@ body {
     color: #0056b3; /* Darker color on hover */
     text-decoration: underline;
 }
+@media (max-width: 768px) {
+    body {
+        padding-top: 120px; /* Increase padding top to account for fixed navbar */
+    }
+
+    .login-container {
+        flex-direction: column; /* Stack login image and form vertically */
+        text-align: center; /* Center align content */
+    }
+
+    .login-image {
+        display: none; /* Add margin bottom for spacing */
+    }
+
+    .login-form {
+        margin-right: 0; /* Remove right margin */
+    }
+
+    .login-image img {
+        max-width: 100%; /* Ensure image takes full width */
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding-top: 160px; /* Further increase padding top for smaller screens */
+    }
+
+    .login-form {
+        padding: 30px; /* Decrease padding inside form */
+    }
+
+    .form-control {
+        padding: 10px; /* Decrease input padding */
+    }
+}

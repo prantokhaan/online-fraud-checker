@@ -53,3 +53,44 @@
 .step:hover p {
     color: #333; /* Darker gray on hover */
 }
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .section-description {
+        margin-bottom: 30px; /* Decrease margin for smaller screens */
+    }
+
+    .step {
+        padding: 30px; /* Increase padding for better touch targets */
+        margin-bottom: 40px; /* Increase margin for better spacing */
+    }
+
+    .step-icon {
+        font-size: 36px; /* Decrease icon size for smaller screens */
+        margin-bottom: 15px; /* Decrease margin below icon */
+    }
+
+    .step h3 {
+        font-size: 20px; /* Decrease heading size */
+        margin-bottom: 10px; /* Decrease margin below heading */
+    }
+
+    .step p {
+        font-size: 14px; /* Decrease paragraph font size */
+    }
+}
+
+@media (max-width: 576px) {
+    .step {
+        padding: 20px; /* Further increase padding */
+        margin-bottom: 30px; /* Further increase margin */
+    }
+
+    .step h3 {
+        font-size: 18px; /* Decrease heading size */
+        margin-bottom: 10px; /* Maintain margin below heading */
+    }
+
+    .step p {
+        font-size: 14px; /* Maintain paragraph font size */
+    }
+}

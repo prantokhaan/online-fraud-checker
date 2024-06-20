@@ -61,3 +61,56 @@
     color: #0056b3; /* Darker blue on hover */
     transform: scale(1.1); /* Slightly enlarge icon on hover */
 }
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #features {
+        padding: 60px 0; /* Decrease padding for smaller screens */
+    }
+
+    .section-title {
+        font-size: 28px; /* Decrease title font size */
+        margin-bottom: 40px; /* Decrease margin bottom */
+    }
+
+    .feature {
+        padding: 30px; /* Decrease padding inside feature */
+        margin-bottom: 20px; /* Decrease margin bottom */
+    }
+
+    .feature h3 {
+        font-size: 22px; /* Decrease heading font size */
+        margin-bottom: 15px; /* Decrease margin bottom */
+    }
+
+    .feature ul li {
+        font-size: 16px; /* Decrease list item font size */
+    }
+
+    .feature ul li i {
+        font-size: 18px; /* Decrease icon font size */
+    }
+}
+
+@media (max-width: 576px) {
+    .section-title {
+        font-size: 24px; /* Further decrease title font size */
+        margin-bottom: 30px; /* Further decrease margin bottom */
+    }
+
+    .feature {
+        padding: 20px; /* Further decrease padding inside feature */
+    }
+
+    .feature h3 {
+        font-size: 20px; /* Further decrease heading font size */
+        margin-bottom: 10px; /* Further decrease margin bottom */
+    }
+
+    .feature ul li {
+        font-size: 14px; /* Further decrease list item font size */
+    }
+
+    .feature ul li i {
+        font-size: 16px; /* Further decrease icon font size */
+    }
+}

@@ -42,3 +42,43 @@
     font-size: 18px;
     margin-bottom: 20px;
 }
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #benefits {
+        padding: 60px 0; /* Decrease padding for smaller screens */
+    }
+
+    .benefits-content {
+        padding: 30px; /* Decrease padding inside content */
+    }
+
+    .benefits-content h2 {
+        font-size: 28px; /* Decrease heading size */
+    }
+
+    .benefit-item h3 {
+        font-size: 20px; /* Decrease heading size */
+    }
+
+    .benefit-item p {
+        font-size: 16px; /* Decrease paragraph font size */
+    }
+}
+
+@media (max-width: 576px) {
+    .benefits-content {
+        padding: 20px; /* Further decrease padding */
+    }
+
+    .benefits-content h2 {
+        font-size: 24px; /* Further decrease heading size */
+    }
+
+    .benefit-item h3 {
+        font-size: 18px; /* Further decrease heading size */
+    }
+
+    .benefit-item p {
+        font-size: 14px; /* Further decrease paragraph font size */
+    }
+}

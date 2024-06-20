@@ -1,5 +1,5 @@
 <?php
-include '../database/db.php'; // Include your database connection file
+include '../database/db.php'; 
 
 $query = "SELECT id, courierName FROM courierAccount";
 $result = $conn->query($query);

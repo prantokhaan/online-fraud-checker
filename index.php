@@ -16,7 +16,7 @@ $conn->close();
 ?>
 
 <?php
-include 'database/db.php'; // Include your database connection file
+include 'database/db.php';
 
 // Fetch all pricing plans from the database
 $query = "SELECT * FROM pricing";

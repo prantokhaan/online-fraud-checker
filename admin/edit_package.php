@@ -1,7 +1,6 @@
 <?php
-include '../database/db.php'; // Include your database connection file
+include '../database/db.php'; 
 
-// Initialize variables to store input values and messages
 $id = $packageName = $price = $message = "";
 
 // Check if the ID is provided

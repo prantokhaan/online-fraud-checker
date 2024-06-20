@@ -1,5 +1,5 @@
 <?php
-include '../database/db.php'; // Include your database connection file
+include '../database/db.php'; 
 
 // Fetch all packages from the database
 $query = "SELECT * FROM pricing";

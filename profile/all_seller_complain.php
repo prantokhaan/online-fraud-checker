@@ -1,5 +1,5 @@
 <?php
-include '../database/db.php'; // Include your database connection file
+include '../database/db.php';
 
 $query = "SELECT id, sellerName, courierName, sellerFBLink, complainStatus, created_at FROM sellerComplain WHERE LOWER(complainStatus) = 'accepted'";
 $result = $conn->query($query);

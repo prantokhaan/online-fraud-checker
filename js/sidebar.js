@@ -122,3 +122,6 @@ function logout() {
   localStorage.removeItem("userId");
   window.location.href = "../auth/login.php";
 }
+
+
+

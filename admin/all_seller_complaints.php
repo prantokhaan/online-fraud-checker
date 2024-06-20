@@ -1,5 +1,5 @@
 <?php
-include '../database/db.php'; // Include your database connection file
+include '../database/db.php';
 
 $filter = isset($_GET['filter']) ? $_GET['filter'] : 'all';
 $query = "SELECT id, courierName, userName, complainStatus FROM sellerComplain";
@@ -21,7 +21,6 @@ $result = $conn->query($query);
     <link rel="stylesheet" href="./css/admin_sidebar.css">
     <link rel="stylesheet" href="./css/all_user_list.css">
     <link rel="icon" href="../images/favicon.png">
-    <!-- Add your other stylesheets here -->
     <script>
         function confirmDelete(id) {
             if (confirm('Are you sure you want to delete this complaint?')) {

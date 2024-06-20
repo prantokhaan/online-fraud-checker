@@ -95,3 +95,30 @@ body {
     color: #0056b3; /* Darker color on hover */
     text-decoration: underline;
 }
+@media (max-width: 768px) {
+    body {
+        margin-top: 280px; /* Increase padding top to account for fixed navbar */
+    }
+
+    .register-form {
+        padding: 30px; /* Decrease padding inside form */
+    }
+
+    .form-control {
+        padding: 10px; /* Decrease input padding */
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding-top: 160px; /* Further increase padding top for smaller screens */
+    }
+
+    .register-form {
+        padding: 20px; /* Further decrease padding inside form */
+    }
+
+    .form-control {
+        padding: 8px; /* Further decrease input padding */
+    }
+}

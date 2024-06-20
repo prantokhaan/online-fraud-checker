@@ -1,5 +1,5 @@
 <?php
-include '../database/db.php'; // Include your database connection file
+include '../database/db.php';
 
 if (isset($_GET['id']) && isset($_GET['name'])) {
     $id = $_GET['id'];
